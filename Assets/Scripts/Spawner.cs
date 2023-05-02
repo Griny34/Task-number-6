@@ -6,21 +6,26 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private EnemyMovement _prefab;
     [SerializeField] private Transform[] _spawnerPoint;
-    [SerializeField] private int _spawnTime;
+    [SerializeField ]private float _delay;
 
-    private float _elapsedTime = 0;
-
-    private void Update()
+    private void Start()
     {
-        _elapsedTime += Time.deltaTime;
+        StartCoroutine(DetainOn());
+    }
 
-        if( _elapsedTime > _spawnTime)
+    private void InstantiateEnemy()
+    {
+        int indexPointSpawner = Random.Range(0, _spawnerPoint.Length);
+
+        Instantiate(_prefab, _spawnerPoint[indexPointSpawner].position, Quaternion.identity);
+    }
+
+    private IEnumerator DetainOn()
+    {
+        while (true)
         {
-            _elapsedTime = 0;
-
-            int indexPointSpawner = Random.Range(0, _spawnerPoint.Length);
-
-            Instantiate(_prefab, _spawnerPoint[indexPointSpawner].position, Quaternion.identity);
+            yield return new WaitForSeconds(_delay);
+            InstantiateEnemy();
         }
     }
 }

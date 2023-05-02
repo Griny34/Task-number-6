@@ -240,7 +240,7 @@ MonoBehaviour:
   _spawnerPoint:
   - {fileID: 2011025693}
   - {fileID: 1403722262}
-  _spawnTime: 2
+  _delay: 2
 --- !u!4 &971417588
 Transform:
   m_ObjectHideFlags: 0
