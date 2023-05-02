@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefab;
+    [SerializeField] private EnemyMovement _prefab;
     [SerializeField] private Transform[] _spawnerPoint;
     [SerializeField] private int _spawnTime;
 
